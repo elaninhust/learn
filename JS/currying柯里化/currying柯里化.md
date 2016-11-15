@@ -16,6 +16,7 @@ function currying(fn,...args){
          return fn.call(null,...(args.concat(rest)));
      }
  }
+ ```
 
 
 - 关于提前返回，很常见的一个例子就是兼容现代浏览器以及IE浏览器的事件添加方法。
@@ -97,7 +98,7 @@ cat={
 
  getName();
 
-```
+
 if(!function(){}.bind){
      Function.prototype.bind=function(obj,...args){
          const self=this;
