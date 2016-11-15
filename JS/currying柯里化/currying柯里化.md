@@ -33,6 +33,7 @@ const attach=function (ele,fn,type,capture){
          });
      }
  }
+ ```
 
 //柯里化之后的情况
 
@@ -52,6 +53,7 @@ const attach=(function(){
          }
      }
  })();
+ ```
 
 没有使用柯里化的情况下可以看出，每一次使用attachEvent的时候，ie浏览器都会走一遍if...else...，其实只需要走一遍，所以采用了柯里化的情况。
 
@@ -78,6 +80,7 @@ function currying(fn,...args){
 
  const g2=currying(f);
  console.log(g2(1)(2)(3));
+ ```
 
 
 另外，ES5中的bind方法，用来改变Function执行时候的上下文（函数主体本身不执行，与call/apply直接执行并改变不同），本质上就是延迟执行。
@@ -103,3 +106,4 @@ if(!function(){}.bind){
          }
      };
  }
+ ```
