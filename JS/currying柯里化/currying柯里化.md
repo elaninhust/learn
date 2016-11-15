@@ -15,8 +15,8 @@ function currying(fn,...args){
      return function(...rest){
          return fn.call(null,...(args.concat(rest)));
      }
- }
- ```
+}
+```
 
 
 - 关于提前返回，很常见的一个例子就是兼容现代浏览器以及IE浏览器的事件添加方法。
@@ -34,11 +34,9 @@ const attach=function (ele,fn,type,capture){
          });
      }
  }
- ```
+
 
 //柯里化之后的情况
-
-```
 const attach=(function(){
      if(window.addEventListener){
          return function(ele,fn,capture){
