@@ -52,3 +52,32 @@ class Dog extends Animal{
 非常方便的是，ES2015的继承语法同样可以将以前使用构造函数模拟的类作为父类来继承。
 
 值得注意的是，如果一个子类继承了一个父类，那么在子类的constructor构造函数中必须使用super()函数调用父类的构造函数后才能在子类的constructor构造函数中使用this，否则会报出`this is not defined`的错误，但是这个问题在除constructor构造函数意外的方法中并不会出现。
+
+## Getter/Setter
+
+Getter/Setter是一种元编程的概念，元编程的特点在于，允许程序可以在对运行时的对象进行读取和操作。
+
+```
+const List={
+    _array:[],
+
+    set new(value){
+        this._array.push(value);
+    }
+
+    get last(){
+        return this._array[0];
+    }
+
+    get value(){
+        return this._array;
+    }
+}
+
+List.new=1;
+List.new=2;
+console.log(List.last);
+console.log(List.value);
+```
+
+## 静态方法static
