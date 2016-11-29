@@ -12,3 +12,5 @@
 var target=ev.srcElement?ev.srcElement:ev.target;
 //类似于判断不同浏览器；
 ```
+
+## `addEventListener`和`attachEvent`的兼容性
