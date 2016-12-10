@@ -32,45 +32,45 @@ const http=require('http');
 
 1. http.createServer(...)
 
-该方法返回一个http.Server的实例，并自动监听这个实例的`request`事件；
+  该方法返回一个http.Server的实例，并自动监听这个实例的`request`事件；
 
-```
-const server=http.createServer(function(req,res){
-    res.writeHead(200,{
-       'content-type':'text/html'
-    });
-    res.write('<h1>hello Ivan!</h1>')
-    res.end();
-});
+  ```
+  const server=http.createServer(function(req,res){
+       res.writeHead(200,{
+          'content-type':'text/html'
+       });
+       res.write('<h1>hello Ivan!</h1>')
+       res.end();
+   });
 
-server.on('error',function(err){
-    console.log(err.message);
-})
+   server.on('error',function(err){
+       console.log(err.message);
+   })
 
-server.listen(2016);
-```
+   server.listen(2016);
+  ```
 
 2. new http.Server();
 
-通过`new`命令符创建并返回一个http服务器实例，需要手动添加`request`请求监听事件；
+  通过`new`命令符创建并返回一个http服务器实例，需要手动添加`request`请求监听事件；
 
-```
-const server=new http.Server();
+  ```
+  const server=new http.Server();
 
-server.on('request',function(req,res){
-    res.writeHead(200,{
-       'content-type':'text/html'
-    });
-    res.write('<h1>hello Ivan!</h1>')
-    res.end();
-});
+   server.on('request',function(req,res){
+       res.writeHead(200,{
+          'content-type':'text/html'
+       });
+       res.write('<h1>hello Ivan!</h1>')
+       res.end();
+   });
 
-server.on('error',function(err){
-    console.log(err.message);
-})
+   server.on('error',function(err){
+       console.log(err.message);
+   })
 
-server.listen(2016);
-```
+   server.listen(2016);
+  ```
 
 ## http客户端
 
@@ -78,59 +78,59 @@ server.listen(2016);
 
 1. http.request()
 
-方法返回一个http.ClientRequest的实例，并自动监听`response`事件。
+  方法返回一个http.ClientRequest的实例，并自动监听`response`事件。
 
-```
-const option={
-    host:'www.baidu.com'
-};
+  ```
+  const option={
+       host:'www.baidu.com'
+   };
 
-const req=http.request(option,function(res){
-    res.setEncoding('utf-8');
-    res.on('data',function(data){
-        console.log(data.toString());
-    });
-});
+   const req=http.request(option,function(res){
+       res.setEncoding('utf-8');
+       res.on('data',function(data){
+           console.log(data.toString());
+       });
+   });
 
-req.end();
-```
+   req.end();
+  ```
 
-通过设置参数option的值，可以选择请求的方式，GET、POST或者其他。
+  通过设置参数option的值，可以选择请求的方式，GET、POST或者其他。
 
 2. new http.ClientRequest()
 
-通过`new`命令符来生成一个http.ClientRequest实例，但是需要手动添加`response`监听事件。
+  通过`new`命令符来生成一个http.ClientRequest实例，但是需要手动添加`response`监听事件。
 
-```
-const option={
-    host:'www.baidu.com'
-};
+  ```
+  const option={
+       host:'www.baidu.com'
+   };
 
-const req=new http.ClientRequest(option);
+   const req=new http.ClientRequest(option);
 
-req.on('response',function(res){
-    res.setEncoding('utf-8');
-    res.on('data',function(data){
-        console.log(data.toString());
-    });
-});
+   req.on('response',function(res){
+       res.setEncoding('utf-8');
+       res.on('data',function(data){
+           console.log(data.toString());
+       });
+   });
 
-req.end();
-```
+   req.end();
+  ```
 
 3. http.get();
 
-该方法是http.request()方法生成GET请求的一个简便方法，不需要手动执行`req.end()`;
+  该方法是http.request()方法生成GET请求的一个简便方法，不需要手动执行`req.end()`;
 
-```
-const option={
-    host:'www.baidu.com'
-};
+  ```
+  const option={
+       host:'www.baidu.com'
+   };
 
-const req=http.get(option,function(res){
-    res.setEncoding('utf-8');
-    res.on('data',function(data){
-        console.log(data.toString());
-    });
-})
-```
+   const req=http.get(option,function(res){
+       res.setEncoding('utf-8');
+       res.on('data',function(data){
+           console.log(data.toString());
+       });
+   })
+  ```
