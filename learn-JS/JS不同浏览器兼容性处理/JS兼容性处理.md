@@ -14,3 +14,7 @@ var target=ev.srcElement?ev.srcElement:ev.target;
 ```
 
 ## `addEventListener`和`attachEvent`的兼容性
+
+- `addEventListener`兼容Chrome、FF、ie9++；并用`removeEventListener`移除监听事件；
+
+- `attachEvent`兼容ie8--；并用`detachEvent`移除监听事件；
