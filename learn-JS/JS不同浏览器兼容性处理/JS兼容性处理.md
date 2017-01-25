@@ -18,3 +18,35 @@ var target=ev.srcElement?ev.srcElement:ev.target;
 - `addEventListener`兼容Chrome、FF、ie9++；并用`removeEventListener`移除监听事件；
 
 - `attachEvent`兼容ie8--；并用`detachEvent`移除监听事件；
+
+## 判断浏览器是否为opera浏览器
+
+```
+isOpera= typeof opera !== 'undefinded' && opera.toString() === '[object Opera]';
+```
+
+## 获取元素样式以及清除元素样式兼容性处理
+
+```
+function getStyle(node, name){
+  var style = node.currentStyle ? node.currentStyle : window.getComputedStyle(node, null);
+  return style[style.getPropertyValue ? 'getPropertyValue' : 'getAttribute'](name);
+};
+
+
+function removeStyle(node, name){
+   var s = node.style;
+   if(s.removeProperty){
+     s.removeProperty(name);
+   } else {
+     s.removeAttribute(name);
+   }
+};
+```
+
+## 阻止事件冒泡
+
+```
+e = e || window.event;
+e.stopPropagation ? e.stopPropagation() : e.cancelBubble = true;
+```

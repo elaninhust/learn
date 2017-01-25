@@ -1,0 +1,9 @@
+1. stylus
+2. babel
+3. 掌握至少一门自动化工具，比如webpack或者gulp
+4. ES6语法
+5. React或者Vue
+6. node
+7. 微信小程序
+8. mongoDB
+9. webpack和gulp各搭建一套脚手架（grunt可以适当了解下）
