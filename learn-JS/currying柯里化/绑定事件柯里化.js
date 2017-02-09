@@ -2,14 +2,14 @@
 const attach = (function() {
     if (window.addEventListener) {
         //判断是现代浏览器
-        return function(ele, fn, capture) {
+        return function(ele, type, fn, capture) {
             ele.addEventListener(type, function(ev) {
                 fn.call(ele, ev);
             }, capture);
         }
     } else if (window.attachEvent) {
         //判断是ie浏览器
-        return function(ele, type) {
+        return function(ele, type,fn) {
             ele.attachEvent('on' + type, function(ev) {
                 fn.call(ele, ev);
             });
