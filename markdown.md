@@ -22,7 +22,7 @@
 
 `代码行`
 
-```
+```js
 function fnGet(){
 
 }
