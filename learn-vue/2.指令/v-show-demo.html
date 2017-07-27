@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>v-show</title>
+	<script src="../vue.min.js"></script>
+</head>
+<body>
+	<div id="container">
+		<ul>
+			<li>1</li>
+			<li v-show="ok">2</li>
+			<li>3</li>
+			<li v-show="notok">4</li>
+			<li>5</li>
+		</ul>
+		
+		/**
+		 * v-show不支持<template>语法
+		 * @type {String}
+		 */
+		<!-- <template v-show='notok'>
+			<ol>
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+		</ol>
+		</template> -->
+	</div>
+	<script>
+		var demo = new Vue({
+			el:'#container',
+			data:{
+				ok:true,
+				notok:false
+			}
+		});
+	</script>
+</body>
+</html>
