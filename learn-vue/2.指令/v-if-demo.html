@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue demo1</title>
+	<script src="../vue.min.js"></script>
+</head>
+<body>
+	<div id="container">
+		<ul id="">
+			<li>1</li>
+			<li v-if="isShow">2</li>
+			<li v-if="notShow">3</li>
+			<li>4</li>
+		</ul>
+		
+		/**
+		 * v-if支持<template>语法
+		 */
+		<template v-if="showOl">
+			<ol>
+				<li>1</li>
+				<li>2</li>
+				<li>3</li>
+				<li>4</li>
+			</ol>
+		</template>
+	</div>
+	<script>
+		var demo1 = new Vue({
+			el:'#container',
+			data:{
+				isShow:false,
+				notShow:true,
+				showOl:true
+			}
+		});
+	</script>
+</body>
+</html>
