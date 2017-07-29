@@ -1,4 +1,0 @@
-- Stylus Clean Completions  //stylus提示插件
-- stylus    //.vue中stylus语法高亮插件
-- Vue Syntax Highlight  //sublime Text高亮.vue文件
-- MarkdownEditing   //markdown语法高亮插件
