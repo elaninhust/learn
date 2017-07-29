@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>radio</title>
+	<script src="../vue.min.js"></script>
+</head>
+<body>
+	<div id="container">
+		<input type="radio" id="data1" v-model="data1">
+		<label for="data1">{{data1}}</label>
+	</div>
+	<script>
+		var demo = new Vue({
+			el:"#container",
+			data:{
+				data1:true
+			}
+		});
+	</script>
+</body>
+</html>

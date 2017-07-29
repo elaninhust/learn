@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>过滤器</title>
+	<script src="../vue.min.js"></script>
+</head>
+<body>
+	<div id="container">
+		<input type="text" v-model='name'>{{name | capitalize }}
+	</div>
+	<script>
+		Vue.filter('capitalize',function(value){
+			if (!value) return '';
+	    	value = value.toString();
+	    	return value.charAt(0).toUpperCase() + value.slice(1);
+		});
+		var demo = new Vue({
+			el:'#container',
+			data:{
+				name:'ivan'
+			}
+		});
+	</script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>checkbox</title>
+	<script src="../vue.min.js"></script>
+</head>
+<body>
+	<div id="container">
+		<form action="">
+			<input type="checkbox" v-model='data0' id="checkbox0">
+			<label for="checkbox0">{{data0}}</label>
+		</form>
+		<br>
+		<form action="">
+			<input type="checkbox" v-model='data1' id="checkbox1" :true-value="'true-ivan'" :false-value="'false-ivan'">
+			<label for="checkbox1">{{data1}}</label>
+		</form>
+		<br>
+		<form action="">
+			<input type="checkbox" v-model="data2" value='ivan' id="checkbox2">
+			<label for="checkbox2" v-text="data2"></label>
+		</form>
+		<br>
+		<form action="">
+			<template v-for="item in interest">
+				<input type="checkbox" v-model="data3" :value="item.value" :id="item.value+3">
+				<label :for="item.value+3">{{item.name}}</label>
+			</template>
+			<br>
+			{{data3}}
+		</form>
+		<br>
+		<form action="">
+			<template v-for="item in interest">
+				<input type="checkbox" v-model="data4" :value="item.value" :id="item.value+4">
+				<label :for="item.value+4">{{item.name}}</label>
+			</template>
+			<br>
+			{{data4}}
+		</form>
+
+	</div>
+	<script>
+		var demo = new Vue({
+			el:'#container',
+			data:{
+				data0:'',
+				data1:'false-ivan',
+				data2:[],
+				data3:[],
+				data4:'',
+				interest:[
+					{
+						value:'swim',
+						name:'游泳'
+					},
+					{
+						value:'sing',
+						name:'唱歌'
+					},
+					{
+						value:'game',
+						name:'游戏'
+					},
+					{
+						value:'lol',
+						name:'王者荣耀'
+					}
+				]
+			}
+		});
+	</script>
+</body>
+</html>
