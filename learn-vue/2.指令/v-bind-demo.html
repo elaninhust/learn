@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>v-bid</title>
+	<script src="../vue.min.js"></script>
+</head>
+<body>
+	<div id="container">
+		<div v-bind:data-value="value" :class="[classA,{classB:isB,classC:isC}]">{{value}}</div>
+	</div>
+	<script>
+		var demo = new Vue({
+			el:'#container',
+			data:{
+				value:'ivan',
+				classA:'elan',
+				isB:true,
+				isC:true
+			}
+		});
+	</script>
+</body>
+</html>

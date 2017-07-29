@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>v-for</title>
+	<script src="../vue.min.js"></script>
+</head>
+<body>
+	<div id="container">
+		<input type="text" v-model="searchText">
+		<ul>
+			<li v-for="(item,index) of names">{{index}} - {{item}}</li>
+			<li v-for="(value,key,index) in interest>{{index}} - {{value}}</li>
+		</ul>
+	</div>
+	<script>
+		var demo = new Vue({
+			el:'#container',
+			data:{
+				type:'name',
+				names:['ivan','elan','shit'],
+				interest:{
+					swim:'swim1',
+					game:'game1',
+					sing:'sing1'
+				}
+			}
+		});
+	</script>
+</body>
+</html>

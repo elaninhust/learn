@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>v-model</title>
+	<script src="../vue.min.js"></script>
+</head>
+<body>
+	<div id="container">
+		<form action="">
+			age：
+			<input type="text" name="name" v-model='age' lazy>
+			{{age}}
+			<br>
+			性别：
+			<input type="radio" id="man" v-model="sex" value="one">
+			<label for="man">男</label>
+			<input type="radio" id="woman" v-model="sex" value="two">
+			<label for="woman">女</label>	
+			<br>
+			兴趣：
+			<input type="checkbox" id="swim" value="swim" v-model="interest">
+			<label for="swim">游泳</label>
+			<input type="checkbox" id="game" value="game" v-model="interest">
+			<label for="game">游戏</label>
+			<input type="checkbox" id="sing" value="sing" v-model="interest">
+			<label for="sing">唱歌</label>
+			<br>
+			<input type="checkbox" v-model="name" :true-value="'ivan'" :false-value="'elan'"><!-- 
+			<input type="checkbox" v-model="name" value="elan">
+			<input type="checkbox" v-model="name" value="shit"> -->
+			{{name}}
+			<br>
+			<select name="" id="" v-model="select">
+				<option v-for="item in items" :value="item.value">{{item.text}}</option>
+			</select>
+		</form>
+	</div>
+	<script>
+		var demo = new Vue({
+			el:'#container',
+			data:{
+				age:20,
+				sex:'one',
+				interest:['','sing'],
+				name:'ivan',
+				select:'sing',
+				items:[
+					{
+						text:'游泳',
+						value:'swim'
+					},
+					{
+						text:'唱歌',
+						value:'sing'
+					},
+					{
+						text:'游戏',
+						value:'game'
+					}				
+				]
+			}
+		});
+	</script>
+</body>
+</html>
