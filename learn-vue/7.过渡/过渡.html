@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>transition-demo</title>
+	<style>
+		.fade-enter-active, .fade-leave-active {
+		  transition: opacity .5s
+		}
+		.fade-enter, .fade-leave-to /* .fade-leave-active 在低于版本 2.1.8 中 */ {
+		  opacity: 0
+		}
+	</style>
+	<script src="../vue.min.js"></script>
+</head>
+<body>
+	<div id="container">
+		<div @click="show = !show">点我</div>
+		<transition name='fade'>
+			<p v-if="show">Ivan Tran</p>
+		</transition>
+	</div>
+	<script>
+		var demo = new Vue({
+			el:'#container',
+			data:{
+				show:true
+			}
+		});
+	</script>
+</body>
+</html>

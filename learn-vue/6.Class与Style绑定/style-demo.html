@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>style-demo</title>
+	<script src="../vue.min.js"></script>
+</head>
+<body>
+	<div id="container">
+		<ul>
+			<li :style="[{color:red,fontSize:'16px'},styleObj]">viehveqvs</li>
+		</ul>
+	</div>
+	<script>
+		var demo = new Vue({
+			el:'#container',
+			data:{
+				red:'green',
+				styleObj:{
+					transform:'scaleY(3)',
+					display:'flex'
+				}
+			}
+		});
+	</script>
+</body>
+</html>

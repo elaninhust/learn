@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>class-demo</title>
+	<script src="../vue.min.js"></script>
+</head>
+<body>
+	<div id="container">
+		<div class="isDiv" :class="{classA:isA,classB:isB}">hhhhhh</div>
+		<div class="isDiv" :class="classObj">56789</div>
+		<div class="isDiv" :class="['classC',classA,isB]">nfdsig</div>
+		<div class="isDiv" :class="[classA,classObj]">dsgdfabdf</div>
+	</div>
+	<script>
+		var demo = new Vue({
+			el:'#container',
+			data:{
+				classA:'ivan',
+				isA:true,
+				isB:false,
+				classObj:{
+					classA:true,
+					classB:false
+				}
+			}
+		});
+	</script>
+</body>
+</html>
