@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>methods-demo</title>
+	<script src="../vue.min.js"></script>
+</head>
+<body>
+	<div id="container">
+		<input type="button" value="点我" @click="say('ivan',$event,event)">
+	</div>
+	<div class="hhh">hahah</div>
+	<script>
+		var demo = new Vue({
+			el:'#container',
+			data:{
+				name:'ivan'
+			},
+			methods:{
+				say:function(str,event,event1){
+					console.log(str,event,event1);
+					this.$emit('change');
+				}
+			}
+		});
+
+		demo.$once('change',function(){
+			console.log('changed');
+		})
+	</script>
+</body>
+</html>
