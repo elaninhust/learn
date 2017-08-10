@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>局部注册-demo</title>
+	<script src="../vue.min.js"></script>
+</head>
+<body>
+	<div id="container">
+		<div-haha></div-haha>
+	</div>
+	<script>
+		Vue.config.devtools = true
+		Vue.component('div-haha',{
+			template:'<div>{{firstName}} + {{lastName}}</div>',
+			data:function(){
+				return {
+					firstName:'Ivan',
+					lastName:'Tran'
+				}
+			},
+		});
+		var demo = new Vue({
+			el:'#container'
+		});
+	</script>
+</body>
+</html>

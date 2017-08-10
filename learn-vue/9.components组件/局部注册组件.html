@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>局部注册-demo</title>
+	<script src="../vue.min.js"></script>
+</head>
+<body>
+	<div id="container">
+		<div-parent></div-parent>
+	</div>
+	<script>
+		//注册一个名为Child的组件
+		var Child = Vue.extend({
+			template:'<p>{{name}}</p>',
+			data:function(){
+				return {
+					name:'我的子组件'
+				}
+			}
+		});
+
+		//注册一个名为Parent的组件，其中Child为Parent的子组件
+		var Parent = Vue.extend({
+			template:'<div>{{name}}<child></child></div>',
+			data:function(){
+				return {
+					name:'我是父组件',
+					text:'这里是父组件的内容'
+				}
+			},
+			components:{
+				'child':Child
+			}
+		});
+		var demo = new Vue({
+			el:'#container',
+			components:{
+				'div-parent':Parent
+			}
+		});
+	</script>
+</body>
+</html>

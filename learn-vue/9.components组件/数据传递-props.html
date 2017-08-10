@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>局部注册-demo</title>
+	<script src="../vue.min.js"></script>
+</head>
+<body>
+	<div id="container" :class='classDiv'>
+		<div-parent></div-parent>
+	</div>
+	<script>
+		var Child = Vue.extend({
+			props:['name'],
+			template:'<p>{{name}}</p>'
+		});
+		var Parent = Vue.extend({
+			template:'<div :class="className">{{parentName}}<p-child :name="childName"></p-child></div>',
+			data:function(){
+				return {
+					parentName:'我是父组件的内容',
+					childName:'我的父组件传递给子组件的内容',
+					className:'classA'
+				}
+			},
+			components:{
+				'p-child':Child
+			}
+		});
+		var demo = new Vue({
+			el:'#container',
+			data:{
+				classDiv:'ivan'
+			},
+			components:{
+				'div-parent':Parent
+			}
+		});
+	</script>
+</body>
+</html>
