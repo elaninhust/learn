@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>局部注册-demo</title>
+	<script src="../vue.min.js"></script>
+	<style>
+		span{
+			padding:0 5px;
+			border: 1px solid #ccc;
+			font-size:14px;
+			color:red;
+		}
+	</style>
+</head>
+<body>
+	<div id="container">
+		<div-haha></div-haha>
+		<div-haha></div-haha>
+		<div-haha></div-haha>
+	</div>
+	<script>
+		var data={
+			counter:0
+		};
+		Vue.component('div-haha',{
+			template:'<span @click="counter = counter +1">{{counter}}</span>',
+			data:function(){
+				return {
+					counter:0
+				}
+			}
+		});
+		var demo = new Vue({
+			el:'#container'
+		});
+	</script>
+</body>
+</html>

@@ -6,4 +6,4 @@
 
 |2.X|1.X|
 |:--:|:--:|
-|Mustache在html属性中不能直接使用，需使用v-bind命令|Mustache可以放在html标签内，但是vue指令和自身特性内是不可以差值的|
+|Mustache在html属性中不能直接使用，需使用v-bind命令|Mustache可以放在html标签内，但是vue指令和自身特性内是不可以插值的|

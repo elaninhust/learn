@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>局部注册-demo</title>
+	<script src="../vue.min.js"></script>
+	<style>
+		span{
+			padding:0 5px;
+			border: 1px solid #ccc;
+			font-size:14px;
+			color:red;
+		}
+		.grey{
+			color:#666;
+		}
+	</style>
+</head>
+<body>
+	<div id="container">
+		<div-haha></div-haha>
+		<div-haha></div-haha>
+		<div-haha></div-haha>
+
+		<div>
+			<div-hehe></div-hehe>
+		</div>
+	</div>
+	<script>
+		var Span = Vue.extend({
+			template:'<span @click="counter = counter +1">{{ counter }}</span>',
+			data:function(){
+				return {
+					counter:0
+				}
+			}
+		});
+
+		var Hehe = Vue.extend({
+			template:'<span :class="{grey:isTrue}" @click="isTrue = !isTrue">{{ counter }}</span>',
+			data:function(){
+				return {
+					counter:12,
+					isTrue:true
+				}
+			}
+		});
+		var demo = new Vue({
+			el:'#container',
+			components:{
+				'div-haha':Span,
+				'div-hehe':Hehe
+			}
+		});
+	</script>
+</body>
+</html>
