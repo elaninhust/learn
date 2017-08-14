@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>组件-props-修饰符</title>
+	<script src="../vue.min.js"></script>
+</head>
+<body>
+	<div id="container">
+		<div-parent></div-parent>
+	</div>
+	<script>
+		var Child = Vue.extend({
+			props:['msg'],
+			template:'<div><input type="text" :value="msg" @input="change($event.target.value)"></div>',
+			methods:{
+				change:function(value){
+					this.$emit('update:msg',value);
+				}
+			}
+		});
+		var Parent = Vue.extend({
+			template:'<div><input type="text" v-model="name" /><child :msg.sync="name"></child></div>',
+			data:function(){
+				return {
+					name:'ivan'
+				}
+			},
+			components:{
+				'child':Child
+			}
+		});
+		var demo = new Vue({
+			el:"#container",
+			components:{
+				'div-parent':Parent
+			}
+		});
+	</script>
+</body>
+</html>

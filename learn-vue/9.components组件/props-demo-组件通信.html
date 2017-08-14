@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>组件-props-$emit</title>
+	<script src="../vue.min.js"></script>
+</head>
+<body>
+	<div id="container">
+		<div-parent></div-parent>
+	</div>
+	<script>
+		var Child = Vue.extend({
+			props:{
+				msg:{
+					type:Number,
+					default:0
+				}
+			},
+			template:'<div><input type="button" @click="clickFn" value="点我" />{{msg}}</div>',
+			methods:{
+				clickFn:function(){
+					this.msg += 1;
+					this.$emit('clickHa',this.msg);
+				}
+			}
+		});
+
+		var Parent = Vue.extend({
+			template:'<div><input type="text" v-model="num" /><child :msg="num" @clickHa="turnFn"></child></div>',
+			components:{
+				'child':Child
+			},
+			data:function(){
+				return {
+					num:2
+				}
+			},
+			methods:{
+				turnFn:function(newValue){
+					this.num = Number(newValue);
+				}
+			}
+		});
+
+		var demo = new Vue({
+			el:'#container',
+			components:{
+				'div-parent':Parent
+			}
+		});
+	</script>
+</body>
+</html>
