@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>钩子函数-demo</title>
+	<script src="../vue.min.js"></script>
+</head>
+<body>
+	<div id="container">
+		<p>{{message}}</p>
+		<input type="button" value="更新" @click="change">
+		<input type="button" value="销毁" @click="destroy">
+	</div>
+</body>
+<script>
+	var demo = new Vue({
+		el:'#container',
+		data:{
+			message:'HELLO CMS'
+		},
+		methods:{
+			change:function(){
+				this.message = 'HELLO changed';
+			},
+			destroy:function(){
+				demo.$destroy();
+			}
+		},
+		beforeCreate:function(){
+			console.group('beforeCreate 创建前状态===============》');
+            console.log("%c%s", "color:red","el     : " + this.$el);
+            console.log("%c%s", "color:red","data   : " + this.$data);
+            console.log("%c%s", "color:red","message: " + this.message);
+		},
+		created:function(){
+			console.group('created 创建完毕状态===============》');
+            console.log("%c%s", "color:red","el     : " + this.$el);
+            console.log("%c%s", "color:red","data   : " + this.$data);
+            console.log("%c%s", "color:red","message: " + this.message);
+		},
+		beforeMount:function(){
+			console.group('beforeMount 挂载前状态===============》');
+            console.log("%c%s", "color:red","el     : " + this.$el);
+            console.log(document.getElementById('container'));
+            console.log("%c%s", "color:red","data   : " + this.$data);
+            console.log("%c%s", "color:red","message: " + this.message);
+		},
+		mounted:function(){
+			console.group('mounted 挂载完毕状态===============》');
+            console.log("%c%s", "color:red","el     : " + this.$el);
+            console.log(document.getElementById('container'));
+            console.log("%c%s", "color:red","data   : " + this.$data);
+            console.log("%c%s", "color:red","message: " + this.message);
+		},
+		beforeUpdate:function(){
+			console.group('beforeUpdate 更新前状态===============》');
+            console.log("%c%s", "color:red","el     : " + this.$el);
+            console.log("%c%s", "color:red","data   : " + this.$data);
+            console.log("%c%s", "color:red","message: " + this.message);
+		},
+		updated:function(){
+			console.group('updated 更新完毕状态===============》');
+            console.log("%c%s", "color:red","el     : " + this.$el);
+            console.log("%c%s", "color:red","data   : " + this.$data);
+            console.log("%c%s", "color:red","message: " + this.message);
+		},
+		beforeDestroy:function(){
+			console.group('beforeDestroy 销毁前状态===============》');
+            console.log("%c%s", "color:red","el     : " + this.$el);
+            console.log("%c%s", "color:red","data   : " + this.$data);
+            console.log("%c%s", "color:red","message: " + this.message);
+            // this.$el.remove();
+		},
+		destroyed:function(){
+			console.group('destroyed 销毁完毕状态===============》');
+            console.log("%c%s", "color:red","el     : " + this.$el);
+            console.log("%c%s", "color:red","data   : " + this.$data);
+            console.log("%c%s", "color:red","message: " + this.message);
+           	this.message = 'HELLO changed2';
+           	console.log(this.message)
+		},
+	});
+</script>
+</html>
