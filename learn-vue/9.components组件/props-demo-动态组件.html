@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>组件-props-动态组件</title>
+	<script src="../vue.min.js"></script>
+</head>
+<body>
+	<div id="container">
+		<!-- <input type="radio" id="one" value="fast" v-model="currentView">
+		<label for="one">fast</label>
+		<br> -->
+		<!-- <input type="radio" id="two" value="bus" v-model="currentView">
+		<label for="two">bus</label>
+		<br>
+		<input type="radio" id="three" value="business" v-model="currentView">
+		<label for="three">business</label>
+		<br> -->
+		<template id="bus">
+			<div>滴滴巴士</div>
+		</template>
+		<template id="business">
+			<div>滴滴专车</div>
+		</template>
+		<template id="fast">
+			<div>滴滴快车</div>
+		</template>
+		<component :is="currentView">
+			
+		</component>
+	</div>
+	<script>
+		var bus = Vue.extend({
+			template:'#bus',
+			repalce:true
+		});
+		var business = Vue.extend({
+			template:'#business',
+			repalce:true
+		});
+		var fast = Vue.extend({
+			template:'#fast',
+			repalce:true
+		});
+		new Vue({
+			el:'#container',
+			data:{
+				currentView:'business'
+			},
+			components:{
+				fast:fast,
+				bus:bus,
+				business:business
+			}
+		});
+	</script>
+</body>
+</html>
