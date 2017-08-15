@@ -16,36 +16,27 @@
 		<input type="radio" id="three" value="business" v-model="currentView">
 		<label for="three">business</label>
 		<br>
-		<template id="bus">
-			<div>滴滴巴士</div>
-		</template>
-		<template id="business">
-			<div>滴滴专车</div>
-		</template>
-		<template id="fast">
-			<div>滴滴快车</div>
-		</template>
 		<component :is="currentView">
 			
 		</component>
 	</div>
 	<script>
 		var bus = Vue.extend({
-			template:'#bus',
+			template:'<div>滴滴巴士</div>',
 			repalce:true
 		});
 		var business = Vue.extend({
-			template:'#business',
+			template:'<div>滴滴专车</div>',
 			repalce:true
 		});
 		var fast = Vue.extend({
-			template:'#fast',
+			template:'<div>滴滴快车</div>',
 			repalce:true
 		});
 		new Vue({
 			el:'#container',
 			data:{
-				currentView:'business'
+				currentView:'bus'
 			},
 			components:{
 				fast:fast,
