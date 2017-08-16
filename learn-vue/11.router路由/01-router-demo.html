@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>router</title>
+	<script src="../vue.min.js"></script>
+	<script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+</head>
+<body>
+	<div id="container">
+		<p>
+			<router-link to="/ivan">ivan</router-link>
+			<router-link to="/elan">elan</router-link>
+		</p>
+		<router-view></router-view>
+	</div>
+	<script>
+		var ivan = {
+			template:'<p>这里是Ivan的路由</p>',
+			beforeRouteEnter:function(to,from,next){
+				console.log(to);
+				console.log(from);
+				next(function(vm){
+					console.log(vm)
+				});
+			}
+		};
+		var elan = {
+			template:'<p>这里是Elan的路由</p>'
+		};
+		var routes = [
+			{
+				path:'/',
+				component:ivan
+			},
+			{
+				path:'/ivan',
+				component:ivan,
+				// beforeEnter:function(to,from){
+				// 	console.log('1',to,from);
+				// }
+			},
+			{
+				path:'/elan',
+				component:elan,
+				alias:'/haha',
+				// beforeEnter:function(to,from){
+				// 	console.log('2',to,from);
+				// }
+			},
+			{
+				path:'*',
+				redirect:'/ivan'	//页面重定向，可用来配置404页
+			}
+		];
+		var router = new VueRouter({
+			routes:routes
+		});
+		// router.beforeEach(function(to,from,next){
+		// 	console.log(to);
+		// 	console.log(from);
+		// 	next();
+		// });
+		// router.afterEach(function(route){
+		// 	console.log(route)
+		// });
+		var demo = new Vue({
+			el:'#container',
+			router:router
+		});
+	</script>
+</body>
+</html>
