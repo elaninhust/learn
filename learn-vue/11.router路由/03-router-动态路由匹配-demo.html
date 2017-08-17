@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>动态路由匹配</title>
+	<script src="../vue.min.js"></script>
+	<script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+</head>
+<body>
+	<div id="app">
+		<select name="" id="" :value="viewType" @change="typeChangeFn($event.target.value)">
+			<option value="/index/list">list</option>
+			<option value="/index/song">song</option>
+			<option value="/index/like">like</option>
+			<option value="/setting">setting</option>
+		</select>
+		<router-view></router-view>	
+	</div>
+	<script>
+		var Index = {
+			//组件模块最外层必须只有一层，否则渲染不出来
+			template:`
+				<div>
+					<h3>这里是index部分</h3>
+					<router-view></router-view>
+				</div>
+			`
+		};
+		var List = {
+			template:'<p>list的组件</p>'
+		};
+		var Song = {
+			template:'<p>song的组件</p>'
+		};
+		var Like = {
+			template:'<p>like的组件</p>'
+		};
+		var Setting = {
+			template:'<p>setting部分</p>'
+		};
+		var routes = [
+			{
+				path:'/index',
+				component:Index,
+				children:[
+					{
+						path:'list',
+						component:List
+					},
+					{
+						path:'song',
+						component:Song
+					},
+					{
+						path:'like',
+						component:Like
+					}
+				]
+			},
+			{
+				path:'/setting',
+				component:Setting
+			}
+		];
+		var router = new VueRouter({
+			routes:routes
+		});
+		var demo = new Vue({
+			el:'#app',
+			data:{
+				viewType:'/index/list'
+			},
+			methods:{
+				typeChangeFn:function(val){
+					this.viewType = val;
+					this.$router.push(val);
+				}
+			},
+			watch:{
+				'$route':function(to,from){
+					var viewType = to.path;
+					this.viewType = viewType;
+				}	
+			},
+			created:function(){
+				this.typeChangeFn(this.$route.path);
+			},
+			router:router
+		});
+	</script>
+</body>
+</html>

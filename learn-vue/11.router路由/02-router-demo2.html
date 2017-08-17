@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>router路由</title>
+	<script src="../vue.min.js"></script>
+	<script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+</head>
+<body>
+	<div id="container">
+		<p>
+			<router-link to="/list">LIST</router-link>
+			<router-link to="/song">SONG</router-link>
+		</p>
+		<router-view></router-view>
+	</div>
+	<script>
+		var List = Vue.extend({
+			template:'<p>list的组件</p>'
+		});
+		var Song = Vue.extend({
+			template:'<p>song的组件</p>'
+		});
+		var routes = [
+			{
+				path:'/',
+				component:List
+			},
+			{
+				path:'/list',
+				component:List
+			},
+			{
+				path:'/song',
+				component:Song
+			}
+		];
+		var router = new VueRouter({
+			routes:routes
+		});
+		var demo = new Vue({
+			el:"#container",
+			router:router
+		});
+	</script>
+</body>
+</html>

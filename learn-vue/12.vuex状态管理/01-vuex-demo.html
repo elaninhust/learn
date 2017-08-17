@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vuex-store-demo</title>
+	<script src="../vue.min.js"></script>
+	<script src="../vuex.js"></script>
+</head>
+<body>
+	<div id="app">
+		<app></app>
+	</div>
+	<script>
+		// Vue.use(Vuex);
+		var store = new Vuex.Store({
+			state:{
+				count:0,
+			},
+			mutations:{
+				increment:function(state){
+					state.count++
+				},
+			}
+		});
+		var Input = Vue.extend({
+			template:`
+				<div>
+					<input type="button" @click="add" value="加1">
+					<br>
+					<p>这里是组件内的值：{{count}}</p>
+					<p>这里是vuex中的值：{{countCom}}</p>
+				</div>
+			`,
+			data:function(){
+				return {
+					count:0
+				}
+			},
+			computed:{
+				countCom:function(){
+					return this.$store.state.count
+				}
+			},
+			methods:{
+				add:function(){
+					this.count++;
+					this.$store.commit('increment');
+				}
+			},
+			created:function(){
+				
+			}
+		});
+		var demo = new Vue({
+			el:"#app",
+			store,
+			components:{
+				'app':Input
+			}
+		});
+	</script>
+</body>
+</html>
